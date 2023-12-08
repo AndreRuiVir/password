@@ -9,7 +9,7 @@ async function connectMysql() {
             host : "mysql", //Nombre del docker-compose service
             user : "user_biblioteca",
             password : mysqlPassword,
-            database : "biblioteca"
+            database : "passwords"
         }
     });
     return db;

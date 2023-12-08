@@ -1,89 +1,66 @@
-#CREATE DATABASE biblioteca;
+CREATE DATABASE IF NOT EXISTS passwords;
 
-USE biblioteca;
+USE passwords;
 
-/*CREATE TABLE autores(
-    id_autor INT NOT NULL AUTO_INCREMENT,
-    nombre VARCHAR (128) NOT NULL,
-    apellido VARCHAR (255),
-    PRIMARY KEY (id_autor));
+-- Tabla para almacenar información de usuarios
+CREATE TABLE usuarios (
+    id_usuario INT NOT NULL AUTO_INCREMENT,
+    correo_electronico VARCHAR(255) NOT NULL,
+    contrasena VARCHAR(255) NOT NULL,
+    nombre_completo VARCHAR(255),
+    PRIMARY KEY (id_usuario)
 );
 
-CREATE TABLE editoriales(
-    id_editorial INT NOT NULL AUTO_INCREMENT,
-    nombre VARCHAR (255) NOT NULL,
-    PRIMARY KEY (id_editorial)
+-- Tabla para almacenar información de brechas de seguridad
+CREATE TABLE brechas_seguridad (
+    id_brecha INT NOT NULL AUTO_INCREMENT,
+    nombre_brecha VARCHAR(255) NOT NULL,
+    fecha_detencion DATE,
+    PRIMARY KEY (id_brecha)
 );
 
-CREATE TABLE temas(
-    id_tema INT NOT NULL AUTO_INCREMENT,
-    nombre VARCHAR (255) NOT NULL,
-    PRIMARY KEY (id_tema)
+-- Tabla para relacionar usuarios con las brechas de seguridad afectadas
+CREATE TABLE usuarios_brechas (
+    id_relacion INT NOT NULL AUTO_INCREMENT,
+    fk_id_usuario INT NOT NULL,
+    fk_id_brecha INT NOT NULL,
+    PRIMARY KEY (id_relacion),
+    FOREIGN KEY (fk_id_usuario) REFERENCES usuarios(id_usuario),
+    FOREIGN KEY (fk_id_brecha) REFERENCES brechas_seguridad(id_brecha)
 );
 
-CREATE TABLE libros(
-    id_libro INT NOT NULL AUTO_INCREMENT,
-    titulo VARCHAR (255) NOT NULL,
-    edicion VARCHAR (32) NOT NULL,
-    fk_id_autor INT NOT NULL,
-    fk_id_editorial INT NOT NULL,
-    fk_id_tema INT NOT NULL,
-    PRIMARY KEY (id_libro),
-    FOREIGN KEY (fk_id_autor) REFERENCES autores(id_autor),
-    FOREIGN KEY (fk_id_editorial) REFERENCES editoriales(id_editorial),
-    FOREIGN KEY (fk_id_tema) REFERENCES temas(id_tema)
-);*/
+-- Tabla para almacenar información sobre la aplicación y su desarrollo
+CREATE TABLE informacion_aplicacion (
+    id_informacion INT NOT NULL AUTO_INCREMENT,
+    version_aplicacion VARCHAR(32) NOT NULL,
+    fecha_lanzamiento DATE NOT NULL,
+    descripcion TEXT,
+    PRIMARY KEY (id_informacion)
+);
 
-#Meterle datos
+-- Inserts para la tabla 'usuarios'
+INSERT INTO usuarios (correo_electronico, contrasena, nombre_completo) VALUES
+('usuario1@example.com', 'contrasena123', 'Usuario Uno'),
+('usuario2@example.com', 'clave456', 'Usuario Dos'),
+('usuario3@example.com', 'secreto789', 'Usuario Tres');
 
--- Insert data into autores table
-INSERT INTO autores (nombre, apellido) VALUES
-('Gabriel', 'García Márquez'),
-('J.K.', 'Rowling'),
-('George', 'Orwell'),
-('Jane', 'Austen'),
-('Haruki', 'Murakami'),
-('Agatha', 'Christie'),
-('Fyodor', 'Dostoevsky'),
-('Margaret', 'Atwood'),
-('Ernest', 'Hemingway'),
-('Maya', 'Angelou');
+-- Inserts para la tabla 'brechas_seguridad'
+INSERT INTO brechas_seguridad (nombre_brecha, fecha_detencion) VALUES
+('Brecha 1', '2023-01-15'),
+('Brecha 2', '2023-02-22'),
+('Brecha 3', '2023-03-10');
 
--- Insert data into editoriales table
-INSERT INTO editoriales (nombre) VALUES
-('Penguin Random House'),
-('HarperCollins'),
-('Simon & Schuster'),
-('Oxford University Press'),
-('Vintage Books'),
-('Hachette Book Group'),
-('Macmillan Publishers'),
-('Wiley'),
-('Pearson'),
-('Bloomsbury');
+-- Inserts para la tabla 'usuarios_brechas'
+INSERT INTO usuarios_brechas (fk_id_usuario, fk_id_brecha) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(1, 2),
+(2, 3),
+(3, 1);
 
--- Insert data into temas table
-INSERT INTO temas (nombre) VALUES
-('Fiction'),
-('Mystery'),
-('Science Fiction'),
-('Romance'),
-('Classics'),
-('Fantasy'),
-('Biography'),
-('History'),
-('Self-Help'),
-('Poetry');
-
--- Insert data into libros table
-INSERT INTO libros (titulo, edicion, fk_id_autor, fk_id_editorial, fk_id_tema) VALUES
-('Cien años de soledad', '1st Edition', 1, 1, 1),
-('Harry Potter and the Sorcerer''s Stone', '1st Edition', 2, 2, 6),
-('1984', '1st Edition', 3, 3, 3),
-('Pride and Prejudice', '1st Edition', 4, 4, 4),
-('Norwegian Wood', '1st Edition', 5, 5, 1),
-('Murder on the Orient Express', '1st Edition', 6, 6, 2),
-('Crime and Punishment', '1st Edition', 7, 7, 2),
-('The Handmaid''s Tale', '1st Edition', 8, 8, 4),
-('The Old Man and the Sea', '1st Edition', 9, 9, 1),
-('I Know Why the Caged Bird Sings', '1st Edition', 10, 10, 8);
+-- Inserts para la tabla 'informacion_aplicacion'
+INSERT INTO informacion_aplicacion (version_aplicacion, fecha_lanzamiento, descripcion) VALUES
+('v1.0', '2023-01-01', 'Primera versión de la aplicación'),
+('v1.1', '2023-02-15', 'Corrección de errores y mejoras de rendimiento'),
+('v2.0', '2023-04-01', 'Nuevas funcionalidades y actualizaciones de seguridad');

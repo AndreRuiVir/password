@@ -1,14 +1,14 @@
-const TemaModel = require("../models/temas");
-const temas = require("../models/temas")
+const usuarios_brechasModel = require("../models/usuarios_brechas");
+const usuarios_brechas = require("../models/usuarios_brechas")
 
-class TemasController {
+class usuarios_brechasController {
     static async indexGet(req, res){
-        let data = await temas.consultar();
+        let data = await usuarios_brechas.consultar();
         res.send(data);
     } 
     static async itemGet(req,res){
         let id = req.params.id;
-        let data = await TemaModel.consultarPorID(id);
+        let data = await usuarios_brechasModel.consultarPorID(id);
         if(data.length==0){
             res.status(404).send({errno:404, error: 'Not found'});
             return;
@@ -19,10 +19,10 @@ class TemasController {
         try {
             const newData = req.body;
 
-            const insertedId = await TemasModel.insertar(newData);
+            const insertedId = await usuarios_brechasModel.insertar(newData);
 
             res.status(201)
-                .header('Location', `/temas/${insertedId}`)
+                .header('Location', `/usuarios_brechas/${insertedId}`)
                 .send({status: 201, message: 'Created'});
         } catch (error) {
             res.status(400).send({ errno: 400, error: 'Bad Request' });
@@ -33,7 +33,7 @@ class TemasController {
             const id = req.params.id;
             const updatedData = req.body;
 
-            const result = await TemasModel.reemplazar(id, updatedData);
+            const result = await usuarios_brechasModel.reemplazar(id, updatedData);
 
             if (result === 0) {
                 res.status(404).send({ errno: 404, error: 'Not found' });
@@ -49,7 +49,7 @@ class TemasController {
             const id = req.params.id;
             const updatedFields = req.body;
 
-            const result = await TemasModel.actualizar(id, updatedFields);
+            const result = await usuarios_brechasModel.actualizar(id, updatedFields);
 
             if (result === 0) {
                 res.status(404).send({ errno: 404, error: 'Not found' });
@@ -62,4 +62,4 @@ class TemasController {
     }
 }
 
-module.exports = TemasController;
+module.exports = usuarios_brechasController;
