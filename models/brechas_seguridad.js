@@ -1,4 +1,4 @@
-const { connectMysql } = require('../dbconnection');
+const { connectMysql } = require('../src/dbconnection');
 class Brechas_SeguridadModel
 {
     static async consultar() {

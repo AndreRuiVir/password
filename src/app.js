@@ -1,10 +1,10 @@
 const express = require('express');
 const app = express();
 
-const usuariosController = require('./controllers/usuariosController');
-const brechas_seguridadController = require('./controllers/brechas_seguridadController');
-const informacion_aplicacionController = require('./controllers/informacion_aplicacionController');
-const usuarios_brechasController = require('./controllers/usuarios_brechasController');
+const usuariosController = require('../controllers/usuariosController');
+const brechas_seguridadController = require('../controllers/brechas_seguridadController');
+const informacion_aplicacionController = require('../controllers/informacion_aplicacionController');
+const usuarios_brechasController = require('../controllers/usuarios_brechasController');
 const puerto = 80;
 
 app.use(express.json());
