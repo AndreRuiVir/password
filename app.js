@@ -17,7 +17,7 @@ app.get("/", function(req, res){
 });
 
 
-app.get('/temas/:id([0-9]+)', TemasController.itemGet);
+app.get('/usuarios/:id([0-9]+)', usuariosController.itemGet);
 app.get('/usuarios',usuariosController.indexGet);
 app.get('/brechas_seguridad', brechas_seguridadController.indexGet);
 app.get('/informacion_aplicacion', informacion_aplicacionController.indexGet);
