@@ -1,4 +1,4 @@
-const { connectMysql } = require('../dbconnection');
+const { connectMysql } = require('../src/dbconnection');
 class Informacion_AplicacionModel
 {
     static async consultar() {
