@@ -8,7 +8,7 @@ class brechas_seguridadController {
     } 
     static async itemGet(req,res){
         let id = req.params.id;
-        let data = await brechas_seguridadModel.consultarPorID(id);
+        let data = await brechas_seguridadModel.consultarPorId(id);
         if(data.length==0){
             res.status(404).send({errno:404, error: 'Not found'});
             return;

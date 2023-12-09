@@ -8,7 +8,7 @@ class usuarios_brechasController {
     } 
     static async itemGet(req,res){
         let id = req.params.id;
-        let data = await usuarios_brechasModel.consultarPorID(id);
+        let data = await usuarios_brechasModel.consultarPorId(id);
         if(data.length==0){
             res.status(404).send({errno:404, error: 'Not found'});
             return;

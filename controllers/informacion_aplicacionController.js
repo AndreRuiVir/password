@@ -8,7 +8,7 @@ class informacion_aplicacionController {
     } 
     static async itemGet(req,res){
         let id = req.params.id;
-        let data = await informacion_aplicacionModel.consultarPorID(id);
+        let data = await informacion_aplicacionModel.consultarPorId(id);
         if(data.length==0){
             res.status(404).send({errno:404, error: 'Not found'});
             return;
