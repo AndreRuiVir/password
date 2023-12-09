@@ -13,7 +13,7 @@ Content-Type: application/json
 
 {
   "version_aplicacion": "v1.0",
-  "fecha_lanzamiento": "2023-01-01"
+  "fecha_lanzamiento": "2023-01-01",
   "descripcion": "Primer versión de la aplicación"
 }
 
