@@ -3,7 +3,7 @@
 Permite actualizar parcialmente la información de una versión de aplicación existente mediante su identificador único.
 
 ## Parámetros de URL
--  `{id}` (obligatorio): Identificador único de la brecha de seguridad que se desea actualizar.
+-  `{id}` (obligatorio): Identificador único de la versión de aplicación que se desea actualizar.
 
 
 ## Ejemplo de Solicitud
@@ -12,8 +12,9 @@ PATCH /informacion_aplicacion/1
 Content-Type: application/json
 
 {
-  "nombre_brecha": "Brecha 1",
-  "fecha_detencion": "2023-01-15"
+  "version_aplicacion": "v1.0",
+  "fecha_lanzamiento": "2023-01-01"
+  "descripcion": "Primer versión de la aplicación"
 }
 
 ```
