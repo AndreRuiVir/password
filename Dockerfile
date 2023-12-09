@@ -13,9 +13,6 @@ RUN npm install
 #Copiamos el contenido del proyecto a /app
 COPY . /app
 
-# Cambiamos al directorio src
-WORKDIR /app/src
-
 #Exponer puerto 80
 EXPOSE 80
 
