@@ -2,7 +2,7 @@
 FROM node:lts
 
 #Crea y cambia el directorio actual a /app
-WORKDIR /app/src
+WORKDIR /app
 
 #Copiar archivo de dependencias
 COPY ./package*.json /app/
@@ -13,6 +13,8 @@ RUN npm install
 #Copiamos el contenido del proyecto a /app
 COPY . /app
 
+# Cambiamos al directorio src
+WORKDIR /app/src
 
 #Exponer puerto 80
 EXPOSE 80
