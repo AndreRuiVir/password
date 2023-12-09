@@ -29,7 +29,7 @@ Asegúrate de tener instalado y configurado Docker antes de comenzar.
 2. Navegar al directorio del proyecto:
    
    ```sh
-   cd node-restful
+   cd password
    ```
 
 3. Ejecutar el siguiente comando para iniciar los contenedores:
@@ -44,7 +44,7 @@ Asegúrate de tener instalado y configurado Docker antes de comenzar.
     > si no lo está, se devolverá un mensaje de error indicando que no se
     > encontró el docker daemon.
 
-4. La API estará disponible en `http://localhost:3100`.
+4. La API estará disponible en `http://localhost:3000`.
 
 ## Documentación detallada
 
