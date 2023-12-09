@@ -12,9 +12,9 @@ PATCH /usuarios/1
 Content-Type: application/json
 
 {
-  "id_relacion": 1,
-  "fk_id_usuario": 1,
-  "fk_id_brecha": 1
+"correo_electronico": "usuario1@example.com",
+  "contrasena": "contrasena123",
+  "nombre_completo": "Usuario 1"
 }
 
 ```
